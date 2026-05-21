@@ -5,13 +5,7 @@ The current location list is from [Matchbook Traveler](https://matchbooktraveler
 
 ## Run locally
 
-Open `index.html` in a browser, or run a tiny static server:
-
-```sh
-python3 -m http.server 5173
-```
-
-Then visit `http://localhost:5173`.
+https://matchbook-collector-map.vercel.app/
 
 ## Rebuild the location data
 
