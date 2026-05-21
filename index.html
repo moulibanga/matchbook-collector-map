@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Matchbox Map</title>
+    <link rel="preconnect" href="https://tile.openstreetmap.org" />
+    <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="panel" aria-label="Matchbox locations">
+        <header class="brand">
+          <p class="eyebrow">For matchbook collectors!</p>
+          <h1>Places with matchboxes</h1>
+        </header>
+
+        <section class="controls" aria-label="Map filters">
+          <label class="search-label" for="search">Search</label>
+          <div class="search-wrap">
+            <input
+              id="search"
+              type="search"
+              placeholder="Place, city, state, note..."
+              autocomplete="off"
+              aria-autocomplete="list"
+              aria-controls="search-suggestions"
+              aria-expanded="false"
+            />
+            <div id="search-suggestions" class="suggestions" role="listbox" hidden></div>
+          </div>
+
+          <div class="filters" role="group" aria-label="Availability">
+            <button class="filter is-active" type="button" data-filter="all">All</button>
+            <button class="filter" type="button" data-filter="available">Has matches</button>
+            <button class="filter" type="button" data-filter="low">Running low</button>
+            <button class="filter" type="button" data-filter="unavailable">No matches</button>
+          </div>
+        </section>
+
+        <section class="stats" aria-label="Location count">
+          <strong id="visible-count">0</strong>
+          <span id="count-label">locations listed</span>
+          <span id="mapped-count" class="mapped-count">0 mapped</span>
+        </section>
+
+        <ol id="location-list" class="location-list"></ol>
+
+        <footer class="source-note">
+          Location data is adapted from
+          <a href="https://matchbooktraveler.com/" target="_blank" rel="noreferrer">Matchbook Traveler</a>.
+          Verify before visiting; availability changes.
+        </footer>
+      </aside>
+
+      <section class="map-wrap" aria-label="Interactive map">
+        <div id="map"></div>
+      </section>
+    </main>
+
+    <script src="vendor/leaflet/leaflet.js"></script>
+    <script src="data/locations.js"></script>
+    <script src="src/app.js"></script>
+  </body>
+</html>
