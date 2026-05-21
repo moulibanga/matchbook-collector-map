@@ -20,5 +20,3 @@ To refresh the browser-ready data file after parsing or geocoding:
 ```sh
 node scripts/export-data-js.mjs
 ```
-
-For a public project that mirrors the full Matchbook Traveler dataset, ask the site owner for permission and offer a link back/correction workflow.
