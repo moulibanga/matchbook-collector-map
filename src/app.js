@@ -30,6 +30,7 @@ const visibleCount = document.querySelector("#visible-count");
 const countLabel = document.querySelector("#count-label");
 const mappedCount = document.querySelector("#mapped-count");
 const filterButtons = [...document.querySelectorAll(".filter")];
+const LIST_RENDER_LIMIT = 250;
 
 let activeFilter = "all";
 let locations = window.MATCHBOX_LOCATIONS || [];
@@ -113,8 +114,9 @@ function renderList(items) {
     return;
   }
 
-  list.replaceChildren(
-    ...items.map((location) => {
+  const visibleItems = items.slice(0, LIST_RENDER_LIMIT);
+  const hasMore = items.length > visibleItems.length;
+  const cards = visibleItems.map((location) => {
       const item = document.createElement("li");
       item.className = "location-card";
       item.classList.toggle("is-unmapped", !hasCoordinates(location));
@@ -131,8 +133,16 @@ function renderList(items) {
 
       item.append(button);
       return item;
-    }),
-  );
+    });
+
+  if (hasMore) {
+    const more = document.createElement("li");
+    more.className = "location-card list-note";
+    more.textContent = `Showing first ${LIST_RENDER_LIMIT.toLocaleString()} results. Search to narrow the list.`;
+    cards.push(more);
+  }
+
+  list.replaceChildren(...cards);
 }
 
 function focusLocation(location) {

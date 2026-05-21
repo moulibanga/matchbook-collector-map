@@ -229,6 +229,12 @@ input[type="search"]:focus {
   border-style: dashed;
 }
 
+.list-note {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
 .location-card.is-unmapped .place-address::after {
   content: "Not pinned yet";
   display: block;
